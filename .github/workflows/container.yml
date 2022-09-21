@@ -1,9 +1,11 @@
 name: container-deploy
 
 on:
+  pull_request:
   push:
     branches: 
       - main
+      - develop
     paths:
       - "allaps/container/**"
 
