@@ -5,11 +5,11 @@ on:
     branches: 
       - main
     paths:
-      - "package/container/**"
+      - "allaps/container/**"
 
 defaults:
   run:
-    working-directory: package/container
+    working-directory: allaps/container
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: AKIAT6E2RMHO4MDP34WK
-          aws-secret-access-key: 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
+          aws-access-key-id: ${{AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{AWS_ACCESS_KEY_SECRET}}
           aws-region: ap-south-1
-      - run: aws s3 sync dist s3://accenturefinalproject/container/latest
+      - run: aws s3 sync dist s3://${{AWS_S3_BUCKET_NAME}}/container/latest
